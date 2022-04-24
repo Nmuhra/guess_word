@@ -1,37 +1,25 @@
 import random
 
-words = ['programming', 'heel', 'lamp', 'television',
-'laptop', 'kick', 'microscope', 'doctor', 'youtube',
-'projects']
-
-random_word = random.choice(words)
-
-print('our random word', random_word)
-
-print('WORD GUESSING GAME')
-
-user_guesses = ''
-chances = 10
-
-while chances > 0:
-    wrong_guesses = 0
-    for character in random_word:
-        if character in user_guesses:
-            print(f"Correct guess: {character}")
-        else:
-            wrong_guesses += 1
-            print('_')
-
-    if wrong_guesses == 0:
-        print("Correct.")
-        print(f"Word : {random_word}")
-        break
-    guess = input('Make a guess: ')
-    user_guesses += guess
-
-    if guess not in random_word:
-        chances -= 1
-        print(f"Wrong. You have {chances} more chances")
-
+wordList = ["cat","dog","mouse","snake","brazil"]
+wordChosen = random.choice(wordList)
+used = []
+display = wordChosen
+for i in range (len(display)):
+  display = display[0:i] + "_" + display[i+1:]
+print (" ".join(display))
+attempts = 0
+while display != wordChosen:
+  guess = input("Please enter a letter: ")
+  guess = guess.lower()
+  used.extend(guess)
+  print ("Attempts: ")
+  for i in range(len(wordChosen)):
+    if wordChosen[i] == guess:
+      display = display[0:i] + guess + display[i+1:]
+  print("Used letters: ")
+  print(used)
+  print(" ".join(display))
+  attempts = attempts + 1 
+print("Well done, you guessed right!")
         if chances == 0:
             print('game over')
