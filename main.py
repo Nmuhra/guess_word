@@ -21,5 +21,3 @@ while display != wordChosen:
   print(" ".join(display))
   attempts = attempts + 1 
 print("Well done, you guessed right!")
-        if chances == 0:
-            print('game over')
